@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  age: 1
+  height: 1.5
+  weight: 1.5
+  sex: MyString
+  target_weight: 1.5
+  target_date: 2023-07-10
+  user: one
+
+two:
+  name: MyString
+  age: 1
+  height: 1.5
+  weight: 1.5
+  sex: MyString
+  target_weight: 1.5
+  target_date: 2023-07-10
+  user: two

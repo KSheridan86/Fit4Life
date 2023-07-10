@@ -1,0 +1,116 @@
+/* custom nasa font */
+@font-face {
+  font-family: 'NasaFont';
+  src: url('./fonts/nasa.woff') format('woff');
+  /* Add other font properties if needed */
+}
+
+.nasa {
+  font-family: 'NasaFont', sans-serif;
+  color: antiquewhite;
+}
+
+/* Navbar styles */
+.nav-link, .navbar-brand, .navbar-toggler-icon {
+  color: antiquewhite !important;
+}
+
+.navbar-toggler {
+  color: #292b2c !important;
+  border: 2px solid antiquewhite !important;
+  border-color: antiquewhite !important;
+}
+
+.navbar-toggler-icon {
+  font-size: 1.2rem;
+  padding: 3px;
+}
+
+
+
+.content-wrapper {
+  position: relative;
+  z-index: 1;
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+}
+
+.navbar-open .content-wrapper {
+  transform: translateY(50px);
+}
+
+
+/* Hero image */
+.home-container {
+  position: relative;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.image-container {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  z-index: -1;
+}
+
+.img-zoom {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.text-container {
+  position: relative;
+  z-index: 1;
+  background-color: rgb(41, 43, 44, .8);
+  color: whitesmoke;
+}
+
+/* Embedded Video */
+#vid {
+  background-color: #000;
+  text-align: center;
+  margin-bottom: -.5rem;
+}
+
+iframe {
+  height: 20rem;
+  border: none;
+}
+
+.hubble-image {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+}
+
+/* Footer */
+.footer > div {
+  color: antiquewhite;
+}
+.social-icons i {
+  color: antiquewhite;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+div > a {
+  color: antiquewhite;
+  text-decoration: none;
+}
+
+@media (max-width: 992px) {
+  .navbar-collapse {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 100%;
+    background-color: #242627;
+    z-index: 1;
+    overflow-y: auto;
+    max-height: calc(100vh - 12vh);
+    transition: max-height 0.3s ease;
+    margin-top: 0;
+  }
+}
