@@ -1,0 +1,28 @@
+<h1>Edit Your Profile</h1>
+<%= form_with model: @profile, url: profile_path, method: :patch do |form| %>
+  <div>
+    <%= form.label :age %>
+    <%= form.number_field :age %>
+  </div>
+  <div>
+    <%= form.label :height %>
+    in inches: <%= form.number_field :height %>
+  </div>
+  <div>
+    <%= form.label :weight %>
+    in Kgs: <%= form.number_field :weight %>
+  </div>
+  <div>
+    <%= form.label :gender %>
+    <%= form.select :gender, ['Male', 'Female', 'Other'] %>
+  </div>
+  <div>
+    <%= form.label :goal_weight %>
+    in Kgs: <%= form.number_field :goal_weight %>
+  </div>
+  <div>
+    <%= form.label :goal_time_frame %>
+    in weeks: <%= form.text_field :goal_time_frame %>
+  </div>
+  <%= form.submit 'Update Profile' %>
+<% end %>

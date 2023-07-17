@@ -1,0 +1,28 @@
+<h1>Welcome to the Home Page</h1>
+<% if user_signed_in? %>
+    <p>Hello, <%= current_user.username %>. You are logged in!</p>
+        <% if current_user.profile %>
+            <p>Your profile has been created.</p>
+            <h2>Your Profile:</h2>
+            <p>Age: <%= @profile.age %></p>
+            <p>Height: <%= @profile.height %></p>
+            <p>Weight: <%= @profile.weight %></p>
+            <p>Gender: <%= @profile.gender %></p>
+            <p>Goal Weight: <%= @profile.goal_weight %></p>
+            <p>Goal Time Frame: <%= @profile.goal_time_frame %></p>
+            <%= button_to 'Edit Profile', edit_profile_path, method: :get %>
+            <%= form_tag destroy_user_session_path, method: :delete do %>
+                <%= submit_tag 'Logout' %>
+            <% end %>
+            <%= button_to "Delete Profile", profile_path(current_user.profile), method: :delete, data: { confirm: "Are you sure you want to delete your profile?" } %>
+            <%= button_to "Delete Account", registration_path(current_user), method: :delete, data: { confirm: "Are you sure you want to delete your account?" } %>
+        <% else %>
+            <%= button_to 'Create Your Profile', new_profile_path, method: :get %>
+            <%= button_to "Delete Account", registration_path(current_user), method: :delete, data: { confirm: "Are you sure you want to delete your account?" } %>
+
+        <% end %>
+    
+<% else %>
+    <p>You are not logged in.</p>
+    <%= link_to 'Login', new_user_session_path %>
+<% end %>

@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  age: 1
+  height: 1.5
+  weight: 1.5
+  gender: MyString
+  goal_weight: 1.5
+  goal_time_frame: MyString
+  user: one
+
+two:
+  age: 1
+  height: 1.5
+  weight: 1.5
+  gender: MyString
+  goal_weight: 1.5
+  goal_time_frame: MyString
+  user: two
