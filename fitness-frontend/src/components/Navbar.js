@@ -10,7 +10,7 @@ import Logout from '../views/Logout';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStream, faDumbbell } from '@fortawesome/free-solid-svg-icons';
 
-const Navbar = ({ isLoggedIn, onLogin, onLogout}) => {
+const Navbar = ({ isLoggedIn, onLogin, onLogout }) => {
   const [isNavOpen, setIsNavOpen] = useState(false);
 
   const toggleNav = () => {

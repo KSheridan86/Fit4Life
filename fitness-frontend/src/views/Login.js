@@ -7,7 +7,7 @@ const api = axios.create({
   withCredentials: true, // This ensures that the CSRF token is sent with the request
 });
 
-const Login = ({ onLogin }) => {
+const Login = ({ onLogin}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loggedIn, setLoggedIn] = useState(false);
@@ -31,7 +31,6 @@ const Login = ({ onLogin }) => {
       console.error('Login failed:', error);
     }
   };
-
 
   return (
     <div>

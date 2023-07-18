@@ -7,6 +7,7 @@ const api = axios.create({
 });
 
 const Home = () => {
+    const [UserData, setUserData] = useState(null);
     const [profileData, setProfileData] = useState(null);
 
     useEffect(() => {
@@ -17,7 +18,9 @@ const Home = () => {
         try {
             const response = await api.get('/api/users/4');
             console.log('Profile data:', response.data);
-            setProfileData(response.data);
+            console.log('User Data:', response.data.profile)
+            setUserData(response.data);
+            setProfileData(response.data.profile);
         } catch (error) {
             console.error('Failed to fetch profile data:', error);
         }
@@ -27,24 +30,28 @@ const Home = () => {
         <div>
             <h1>Home</h1>
             <div>
-                {profileData ? (
+                {UserData ? (
                 <div>
-                <h2>Welcome, {profileData.username}</h2>
-                {/* <p>Age: {profileData.profile.age}</p>
-                <p>Height: {profileData.profile.height} Cms</p>
-                <p>Weight: {profileData.profile.weight} Kgs</p>
-                <p>Gender: {profileData.profile.gender}</p>
-                <p>Goal Weight: {profileData.profile.goal_weight} Kgs</p>
-                <p>Deadline: {profileData.profile.goal_time_frame} weeks</p> */}
-                {/* Display other profile data as needed */}
+                <h2>Welcome, {profileData ? profileData.username : 'Friend!'}</h2>
                 </div>
                 ) : (
                 <div>
                 <h2>Loading...</h2>
                 </div>
                 )}
+                {profileData ? (<div><p>Age: {profileData.age}</p>
+                <p>Height: {profileData.height} Cms</p>
+                <p>Weight: {profileData.weight} Kgs</p>
+                <p>Gender: {profileData.gender}</p>
+                <p>Goal Weight: {profileData.goal_weight} Kgs</p>
+                <p>Deadline: {profileData.goal_time_frame} weeks</p></div>
+                ) : (
+                <div>
+                    <h2>No Profile?</h2>
+                    <p>Users who create profiles are 8 times more likely to reach their goals!</p>
+                </div>)}
+                </div>
             </div>
-        </div>
     );
 };
 
