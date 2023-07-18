@@ -10,7 +10,7 @@ const api = axios.create({
 const Login = ({ onLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [loggedIn, setLoggedIn] = useState(false); // Add this line to track login status
+  const [loggedIn, setLoggedIn] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -22,7 +22,8 @@ const Login = ({ onLogin }) => {
           password,
         },
       });
-      console.log('Login successful:', response.data + loggedIn);
+      console.log('Login successful');
+      console.log(response.data.user.id)
       setLoggedIn(true);
       onLogin();
       navigate('/');

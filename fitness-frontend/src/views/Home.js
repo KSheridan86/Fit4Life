@@ -15,8 +15,8 @@ const Home = () => {
 
     const fetchProfileData = async () => {
         try {
-            const response = await api.get('/'); // Replace '/profile' with the actual endpoint to fetch the profile data
-            console.log('Profile data:', response);
+            const response = await api.get('/api/users/4');
+            console.log('Profile data:', response.data);
             setProfileData(response.data);
         } catch (error) {
             console.error('Failed to fetch profile data:', error);
@@ -29,8 +29,13 @@ const Home = () => {
             <div>
                 {profileData ? (
                 <div>
-                <h2>Welcome, {profileData.name}</h2>
-                <p>Email: {profileData.email}</p>
+                <h2>Welcome, {profileData.username}</h2>
+                {/* <p>Age: {profileData.profile.age}</p>
+                <p>Height: {profileData.profile.height} Cms</p>
+                <p>Weight: {profileData.profile.weight} Kgs</p>
+                <p>Gender: {profileData.profile.gender}</p>
+                <p>Goal Weight: {profileData.profile.goal_weight} Kgs</p>
+                <p>Deadline: {profileData.profile.goal_time_frame} weeks</p> */}
                 {/* Display other profile data as needed */}
                 </div>
                 ) : (

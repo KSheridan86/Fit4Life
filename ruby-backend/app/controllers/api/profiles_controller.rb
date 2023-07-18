@@ -1,6 +1,7 @@
 module Api
     class ProfilesController < ApplicationController
         before_action :authenticate_user!
+        before_action :set_current_user
 
         def index
             @profiles = current_user.profiles
@@ -37,6 +38,10 @@ module Api
         end
 
         private
+
+        def set_current_user
+            @current_user ||= User.find_by(authentication_token: request.headers['Authorization'])
+        end
 
         def profile_params
             params.require(:profile).permit(:age, :height, :weight, :gender, :goal_weight, :goal_time_frame)
