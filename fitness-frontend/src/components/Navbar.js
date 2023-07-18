@@ -5,10 +5,12 @@ import Home from '../views/Home';
 import Workout from '../views/Workout';
 import Nutrition from '../views/Nutrition';
 import Goals from '../views/Goals';
+import Login from '../views/Login';
+import Logout from '../views/Logout';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStream, faDumbbell } from '@fortawesome/free-solid-svg-icons';
 
-const Navbar = () => {
+const Navbar = ({ isLoggedIn, onLogin, onLogout}) => {
   const [isNavOpen, setIsNavOpen] = useState(false);
 
   const toggleNav = () => {
@@ -63,6 +65,17 @@ const Navbar = () => {
                   Goals
                 </Link>
               </li>
+              { isLoggedIn ? 
+                <li className="nav-item"> {/* New list item for the Login link */}
+                  <Link className="nav-link nasa" to="/logout" onClick={closeNav}>
+                    Logout
+                  </Link>
+                </li> : 
+                <li className="nav-item"> {/* New list item for the Login link */}
+                  <Link className="nav-link nasa" to="/login" onClick={closeNav}>
+                    Login
+                  </Link>
+                </li>}
             </ul>
           </div>
         </div>
@@ -72,6 +85,8 @@ const Navbar = () => {
         <Route path="/workout" element={<Workout />} />
         <Route path="/nutrition" element={<Nutrition />} />
         <Route path="/goals" element={<Goals />} />
+        <Route path="/login" element={<Login onLogin={onLogin} onLogout={onLogout} />} /> 
+        <Route path="/logout" element={<Logout onLogin={onLogin} onLogout={onLogout} />} />
       </Routes>
     </Router>
   );
