@@ -8,20 +8,16 @@ const api = axios.create({
 });
 
 const Logout = ({ onLogout }) => {
-    const [loggedIn, setLoggedIn] = useState(false);
     const navigate = useNavigate();
 
     const handleLogout = async () => {
         try {
-            const response = await api.post('/logout');
-            console.log('Logout successful:', response.data + loggedIn);
-            setLoggedIn(false);
+            api.post('/logout');
             onLogout();
             navigate('/');
         } catch (error) {
             console.error('Logout failed:', error);
         }
-        setLoggedIn(false);
         onLogout();
     };
 

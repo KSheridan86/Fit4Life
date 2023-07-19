@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import { useLocation } from 'react-router-dom';
 
 const api = axios.create({
   baseURL: 'http://localhost:4000', // Replace with the actual base URL of your Rails API
@@ -9,16 +10,20 @@ const api = axios.create({
 const Home = () => {
     const [UserData, setUserData] = useState(null);
     const [profileData, setProfileData] = useState(null);
+    const location = useLocation();
+    const dataFromLogin = location.state?.data;
 
     useEffect(() => {
-        fetchProfileData();
-    }, []);
+        if (dataFromLogin !== undefined) {
+            fetchProfileData(dataFromLogin);
+        }
+    }, [dataFromLogin]);
 
-    const fetchProfileData = async () => {
+    const fetchProfileData = async (userId) => {
         try {
-            const response = await api.get('/api/users/4');
-            console.log('Profile data:', response.data);
-            console.log('User Data:', response.data.profile)
+            const response = await api.get(`/api/users/${userId}`);
+            // console.log('User data:', response.data);
+            // console.log('Profile Data:', response.data.profile)
             setUserData(response.data);
             setProfileData(response.data.profile);
         } catch (error) {
@@ -32,7 +37,7 @@ const Home = () => {
             <div>
                 {UserData ? (
                 <div>
-                <h2>Welcome, {profileData ? profileData.username : 'Friend!'}</h2>
+                <h2>Welcome {profileData ? UserData.username : 'Friend!'}!</h2>
                 </div>
                 ) : (
                 <div>

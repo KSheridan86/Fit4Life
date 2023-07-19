@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
@@ -7,12 +7,12 @@ const api = axios.create({
   withCredentials: true, // This ensures that the CSRF token is sent with the request
 });
 
-const Login = ({ onLogin}) => {
+const Login = ({ onLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [data, setData] = useState(null);
   const navigate = useNavigate();
-
+    
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
@@ -22,15 +22,19 @@ const Login = ({ onLogin}) => {
           password,
         },
       });
-      console.log('Login successful');
-      console.log(response.data.user.id)
-      setLoggedIn(true);
+      setData(response.data.user.id)
       onLogin();
-      navigate('/');
+      
     } catch (error) {
-      console.error('Login failed:', error);
-    }
+        console.error('Error while making the API call:', error);
+      }
   };
+
+  useEffect(() => {
+    if (data !== null) {
+      navigate('/', { state: {data}})
+    }
+  }, [data, navigate]);
 
   return (
     <div>
