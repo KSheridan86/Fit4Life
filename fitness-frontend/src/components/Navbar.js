@@ -7,6 +7,7 @@ import Nutrition from '../views/Nutrition';
 import Goals from '../views/Goals';
 import Login from '../views/Login';
 import Logout from '../views/Logout';
+import ConfirmDelete from '../views/ConfirmDelete';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStream, faDumbbell } from '@fortawesome/free-solid-svg-icons';
 
@@ -87,6 +88,7 @@ const Navbar = ({ isLoggedIn, onLogin, onLogout }) => {
         <Route path="/goals" element={<Goals />} />
         <Route path="/login" element={<Login onLogin={onLogin} onLogout={onLogout} />} /> 
         <Route path="/logout" element={<Logout onLogin={onLogin} onLogout={onLogout} />} />
+        <Route path="/confirm-delete/:id" element={<ConfirmDelete />} />
       </Routes>
     </Router>
   );
