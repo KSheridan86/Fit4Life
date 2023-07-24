@@ -1,5 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const api = axios.create({
@@ -9,12 +10,15 @@ const api = axios.create({
 
 const ConfirmDelete = () => {
     const { id } = useParams();
+    const navigate = useNavigate();
 
     const handleDeleteProfile = async () => {
         try {
           await api.delete(`/api/profiles/${id}`);
           // Perform any necessary cleanup or actions after successful deletion
           // For example, you could redirect to the home page or show a success message
+          // window.location.replace('/');
+          navigate('/'); 
         } catch (error) {
           console.error('Failed to delete profile:', error);
         }

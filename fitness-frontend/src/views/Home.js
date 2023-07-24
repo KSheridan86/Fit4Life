@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 const api = axios.create({
@@ -41,9 +41,8 @@ const Home = () => {
     return (
         <div>
             <h1>Home</h1>
-            <h2>Welcome {profileData ? UserData.username : 'Friend!'}!</h2>
+            <h2>Welcome {UserData ? UserData.username : 'Friend!'}!</h2>
             <div>
-             
                 {profileData ? (
                 <div>
                 

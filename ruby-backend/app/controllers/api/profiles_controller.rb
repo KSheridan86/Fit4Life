@@ -2,6 +2,8 @@ module Api
     class ProfilesController < ApplicationController
         before_action :authenticate_user!
         before_action :set_current_user
+        skip_before_action :verify_authenticity_token
+        # protect_from_forgery with: :exception, unless: -> { request.format.json? }
 
         def index
             @profiles = current_user.profiles
@@ -32,10 +34,18 @@ module Api
         end
 
         def destroy
-            @profile = current_user.profiles.find(params[:id])
-            @profile.destroy
+            @profile = current_user.profile
+            puts "Current User: #{current_user.email}" # Add this line for debugging
+            puts "Profile ID to delete: #{params[:id]}" # Add this line for debugging
+            if @profile.nil?
+                puts "Profile not found!" # Add this line for debugging
+              else
+                @profile.destroy
+              end
+            
             head :no_content
         end
+        
 
         private
 

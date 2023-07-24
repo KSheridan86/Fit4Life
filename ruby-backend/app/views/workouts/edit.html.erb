@@ -1,0 +1,19 @@
+<h1>Edit Workout</h1>
+<%= form_with(model: @workout, url: workout_path(@workout), method: :patch) do |form| %>
+  <%= label_tag :length %>
+  <%= number_field_tag 'workout[length]' %>
+
+  <%= label_tag :calories_burned %>
+  <%= number_field_tag 'workout[calories_burned]' %>
+
+  <%= label_tag :exercises %>
+  <%= text_area_tag 'workout[exercises]' %>
+
+  <%= label_tag :difficulty %>
+  <%= select_tag 'workout[difficulty]', options_for_select(["easy", "standard", "hard"]) %>
+
+  <%= label_tag :weight_after %>
+  <%= number_field_tag 'workout[weight_after]' %>
+
+  <%= submit_tag 'Create Workout' %>
+<% end %>
