@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Goals = () => {
+const Calories = () => {
     return (
         <div>
-            <h1>Goals</h1>
+            <h1>Calories</h1>
         </div>
     );
 };
 
-export default Goals;
+export default Calories;

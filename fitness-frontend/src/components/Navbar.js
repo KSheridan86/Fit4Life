@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import '../App.css';
 import Home from '../views/Home';
-import Workout from '../views/Workout';
+import Calories from '../views/Calories';
 import Nutrition from '../views/Nutrition';
-import Goals from '../views/Goals';
 import Login from '../views/Login';
 import Logout from '../views/Logout';
 import ConfirmDelete from '../views/ConfirmDelete';
@@ -52,18 +51,13 @@ const Navbar = ({ isLoggedIn, onLogin, onLogout }) => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link nasa" to="/workout" onClick={closeNav}>
-                  Workout
+                <Link className="nav-link nasa" to="/calories" onClick={closeNav}>
+                  Calories
                 </Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link nasa" to="/nutrition" onClick={closeNav}>
                   Nutrition
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link nasa" to="/goals" onClick={closeNav}>
-                  Goals
                 </Link>
               </li>
               { isLoggedIn ? 
@@ -83,9 +77,8 @@ const Navbar = ({ isLoggedIn, onLogin, onLogout }) => {
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/workout" element={<Workout />} />
+        <Route path="/calories" element={<Calories />} />
         <Route path="/nutrition" element={<Nutrition />} />
-        <Route path="/goals" element={<Goals />} />
         <Route path="/login" element={<Login onLogin={onLogin} onLogout={onLogout} />} /> 
         <Route path="/logout" element={<Logout onLogin={onLogin} onLogout={onLogout} />} />
         <Route path="/confirm-delete/:id" element={<ConfirmDelete />} />
