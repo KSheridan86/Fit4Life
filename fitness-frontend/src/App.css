@@ -116,5 +116,21 @@ div > a {
 }
 
 .spacing {
-  min-height: 140vh;
+  margin-bottom: 10rem;
+}
+
+input, button {
+  box-shadow: 5px 5px 10px 1px #292b2c;
+}
+
+h1 {
+  text-shadow: 5px 5px 13px #686868;
+}
+
+p {
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.hand-writing {
+  font-family: 'Edu SA Beginner', cursive;
 }

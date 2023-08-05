@@ -8,7 +8,7 @@ import Login from '../views/Login';
 import Logout from '../views/Logout';
 import ConfirmDelete from '../views/ConfirmDelete';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStream, faDumbbell } from '@fortawesome/free-solid-svg-icons';
+import { faStream, faHeartbeat } from '@fortawesome/free-solid-svg-icons';
 
 const Navbar = ({ isLoggedIn, onLogin, onLogout }) => {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -26,7 +26,7 @@ const Navbar = ({ isLoggedIn, onLogin, onLogout }) => {
       <nav className="navbar navbar-expand-lg navbar-light bg-dark sticky-top">
         <div className="container">
           <Link className="navbar-brand nasa" to="/">
-          <FontAwesomeIcon icon={faDumbbell} /> Fit4Life <FontAwesomeIcon icon={faDumbbell} />
+            <FontAwesomeIcon icon={faHeartbeat} /> Fit4Life
           </Link>
           <button
             className="navbar-toggler"

@@ -23,8 +23,14 @@ const Logout = ({ onLogout }) => {
 
     return (
         <div>
-            <h2>Logout</h2>
-                <button onClick={handleLogout}>Logout</button>
+            <h1 className="fw-bold p-4 m-4 text-center">Are you sure you want to Logout?</h1>
+            <div className="col-12 text-center hand-writing">
+                <button 
+                    onClick={handleLogout}
+                    className="btn btn-primary border-dark border-2 col-6">
+                        Logout
+                </button>
+            </div>
         </div>
     );
 };

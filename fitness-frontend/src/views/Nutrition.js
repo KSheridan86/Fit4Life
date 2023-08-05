@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLongArrowAltDown } from '@fortawesome/free-solid-svg-icons';
 
 const Nutrition = () => {
     const [foodType, setFoodType] = useState('');
@@ -33,74 +35,97 @@ const Nutrition = () => {
 
     return (
         <div className="spacing">
-        <h1>Nutritionix API Integration</h1>
-        <div className="row justify-content-center">
-            <div className="col-8">
-                <input
-                className="border border-dark border-2 p-2 mt-2"
-                    type="text"
-                    placeholder="Enter food type"
-                    value={foodType}
-                    onChange={(e) => setFoodType(e.target.value)}
-                />
+            <h1 className="fw-bold p-4 pb-1 text-center">Find the food that's right for you!</h1>
+            <p className="p-3 text-center">
+                Whether you're planning your meals, making healthier choices, or simply curious about 
+                the calorific content of your favorite foods, our carefully curated database provides 
+                you with instant access to the vital data you need.
+                <hr />
+                Uncover the calories, macronutrients, vitamins, and minerals 
+                present in various food items, empowering you to make well-informed decisions that align 
+                with your health and fitness objectives.
+                <hr />
+                <p class="hand-writing fs-4">Simply input the food you're looking for below and we'll do the rest!</p>
+                <div className="d-flex justify-content-evenly align-items-center mt-3">
+                    <FontAwesomeIcon icon={faLongArrowAltDown} />
+                    <FontAwesomeIcon icon={faLongArrowAltDown} />
+                </div>
+            </p>
+            <div className="d-flex justify-content-center align-items-center">
+                <div className="row">
+                    <div className="col-12">
+                        <input
+                        className="text-center border border-dark border-2 p-2 form-control mb-2 hand-writing"
+                            type="text"
+                            placeholder="Enter food/ingredient"
+                            value={foodType}
+                            onChange={(e) => setFoodType(e.target.value)}
+                        />
+                    </div>
+                    <br></br>
+                    <div className="col-12 text-center hand-writing">
+                        <button onClick={handleSearch} className="btn btn-primary border-dark border-2 mt-3 col-6">Search</button>
+                    </div>
+                </div>
             </div>
-            
-            <br></br>
-            <button onClick={handleSearch} className="col-4 btn btn-primary mt-3">Search</button>
-        </div>
 
         {nutritionInfo && (
             <div className="border border-dark border-2 m-4 p-2 mb-5">
-                <h2 className="text-center fw-bold">Nutrition facts</h2>
-                <hr />
+                <h2 className="text-center fw-bold border-bottom border-5">Nutrition facts</h2>
+                <p className="col text-center text-capitalize fw-bold fs-5 border-bottom border-4">
+                    {nutritionInfo.food_name}
+                </p>
                 <div className="row">
-                <p className="col text-start text-capitalize fw-bold fs-5">{nutritionInfo.food_name}</p>
-                <img className="col text-end" src={nutritionInfo.photo.thumb} alt={`Thumbnail of ${nutritionInfo.food_name}`} />
+                    <img 
+                        className="col text-end" 
+                        src={nutritionInfo.photo.highres} 
+                        alt={`Thumbnail of ${nutritionInfo.food_name}`} 
+                    />
                 </div>
                 <hr />
-                <div className="row">
+                <div className="row m-auto">
                     <p className="col fw-bold text-start">Serving Size:</p>
                     <p className="col text-end">{nutritionInfo.serving_qty} {nutritionInfo.serving_unit}</p>
                 </div>
                 <hr />
-                <div className="row">
+                <div className="row m-auto">
                     <div className="col fw-bold text-start">Calories:</div>
                     <div className="col text-end">{nutritionInfo.nf_calories}</div>
                 </div>
                 <hr />
-                <div className="row">
+                <div className="row m-auto border-bottom">
                     <div className="col fw-bold text-start">Dietary Fiber:</div>
                     <div className="col text-end">{nutritionInfo.nf_dietary_fiber} g</div>
                 </div>
-                <div className="row">
+                <div className="row m-auto border-bottom">
                     <div className="col fw-bold text-start">Carbohydrate:</div>
                     <div className="col text-end">{nutritionInfo.nf_total_carbohydrate} g</div>
                 </div>
-                <div className="row">
+                <div className="row m-auto border-bottom">
                     <div className="col fw-bold text-start">Sugars:</div>
                     <div className="col text-end">{nutritionInfo.nf_sugars} g</div>
                 </div>
-                <div className="row">
+                <div className="row m-auto border-bottom">
                     <div className="col fw-bold text-start">Saturated Fat:</div>
                     <div className="col text-end">{nutritionInfo.nf_saturated_fat} g</div>
                 </div>
-                <div className="row">
+                <div className="row m-auto border-bottom">
                     <div className="col fw-bold text-start">Total Fat:</div>
                     <div className="col text-end">{nutritionInfo.nf_total_fat} g</div>
                 </div>
-                <div className="row">
+                <div className="row m-auto border-bottom">
                     <div className="col fw-bold text-start">Sodium:</div>
                     <div className="col text-end">{nutritionInfo.nf_sodium} mg</div>
                 </div>
-                <div className="row">
+                <div className="row m-auto border-bottom">
                     <div className="col fw-bold text-start">Protein:</div>
                     <div className="col text-end">{nutritionInfo.nf_protein} g</div>
                 </div>
-                <div className="row">
+                <div className="row m-auto border-bottom">
                     <div className="col fw-bold text-start">Potassium:</div>
                     <div className="col text-end">{nutritionInfo.nf_potassium} mg</div>
                 </div>
-                <div className="row mb-2">
+                <div className="row m-auto border-bottom mb-2">
                     <div className="col fw-bold text-start">Cholesterol:</div>
                     <div className="col text-end">{nutritionInfo.nf_cholesterol} mg</div>
                 </div>

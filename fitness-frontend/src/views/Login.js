@@ -38,17 +38,42 @@ const Login = ({ onLogin }) => {
 
   return (
     <div>
-      <h2>Login</h2>
+      <h1 className="fw-bold p-4 pb-1 text-center">Welcome to Fit4Life!</h1>
+      <p className="p-3 text-center">
+        Login to your account and embark on a journey towards better health and well-being. 
+        <hr />
+        With our powerful tools, you can easily track your nutrition, monitor your calories, 
+        and make informed choices about your diet. 
+      </p>
       <form onSubmit={handleLogin}>
-        <div>
-          <label>Email:</label>
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        </div>
-        <button type="submit">Login</button>
+        <div className="d-flex justify-content-center align-items-center">
+          <div className="row">
+            <div className="col-12">
+              <input
+                className="text-center border border-dark border-2 p-2 form-control mb-2 hand-writing" 
+                type="email"
+                placeholder="Enter Email"
+                value={email} 
+                onChange={(e) => setEmail(e.target.value)} 
+              />
+              <br></br>
+              <input
+                className="text-center border border-dark border-2 p-2 form-control mb-2 hand-writing" 
+                type="password"
+                placeholder="Enter Password"
+                value={password} 
+                onChange={(e) => setPassword(e.target.value)} />
+              </div>
+              <br></br>
+              <div className="col-12 text-center hand-writing">
+                <button 
+                  className="btn btn-primary border-dark border-2 mt-3 col-6"
+                  type="submit">
+                    Login
+                </button>
+              </div>
+            </div>
+          </div>
       </form>
     </div>
   );

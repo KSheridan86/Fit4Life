@@ -40,7 +40,6 @@ const Home = () => {
 
     return (
         <div>
-            <h1>Home</h1>
             <h2>Welcome {UserData ? UserData.username : 'Friend!'}!</h2>
             <div>
                 {profileData ? (
