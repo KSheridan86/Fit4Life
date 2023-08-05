@@ -39,12 +39,17 @@ const Login = ({ onLogin }) => {
   return (
     <div>
       <h1 className="fw-bold p-4 pb-1 text-center">Welcome to Fit4Life!</h1>
-      <p className="p-3 text-center">
-        Login to your account and embark on a journey towards better health and well-being. 
+      <div className="p-3 text-center">
+        <p>
+          Login to your account and embark on a journey towards better health and well-being. 
+        </p>
         <hr />
-        With our powerful tools, you can easily track your nutrition, monitor your calories, 
-        and make informed choices about your diet. 
-      </p>
+        <p>  
+          With our powerful tools, you can easily track your nutrition, monitor your calories, 
+          and make informed choices about your diet. 
+        </p>
+      </div>
+      <hr />
       <form onSubmit={handleLogin}>
         <div className="d-flex justify-content-center align-items-center">
           <div className="row">

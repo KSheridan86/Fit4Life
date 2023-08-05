@@ -10,6 +10,11 @@
   color: antiquewhite;
 }
 
+.nasa-black {
+  font-family: 'NasaFont', sans-serif;
+  color: black;
+}
+
 /* Navbar styles */
 .nav-link, .navbar-brand, .navbar-toggler-icon {
   color: antiquewhite !important;
