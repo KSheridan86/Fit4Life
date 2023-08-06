@@ -40,14 +40,17 @@ const Home = () => {
 
     return (
         <div className="spacing">
-            <h1 className="fw-bold p-4 pb-1 text-center">
-                Welcome to 
-                <br />
-                <span className="nasa-black text-uppercase">Fit4Life</span>
-                <br /> 
-                our innovative calorie tracking app!
-            </h1>
-            <div className="p-3 text-center">
+            <div className="glass-box border-dark m-3">
+                <h1 className="fw-bold p-4 pb-1 text-center">
+                    Welcome to 
+                    <br />
+                    <span className="nasa text-uppercase">Fit4Life</span>
+                    <br /> 
+                    our innovative calorie tracking app!
+                </h1>
+            </div>
+            
+            <div className="p-3 text-center glass-box m-3 border-dark">
                 <p>
                     With our user-friendly platform, you have the power to take control of your nutrition and make 
                     informed choices about your food. 
@@ -69,8 +72,9 @@ const Home = () => {
                 </p>
                 
             </div>
-            <h1 className="hand-writing text-center">Welcome {UserData ? UserData.username : 'Friend!'}!</h1>
-            <div>
+            
+            <div className="glass-box m-3 mb-5 border-dark">
+            <h1 className="hand-writing text-center mt-3 mb-3">Welcome {UserData ? UserData.username : 'Friend!'}!</h1>
                 {profileData ? (
                 <div>
                 
@@ -83,15 +87,17 @@ const Home = () => {
                 <button onClick={handleDeleteProfile} className="btn border-dark">Delete Profile</button>
                 </div>
                 ) : (
-                <div>
+                <div className="text-center">
                     <h2>No Profile?</h2>
+                    <h4>No Problem!</h4>
+                    <h5>But...</h5>
                     <p>Users who create profiles are 8 times more likely to reach their goals!</p>
                     <div className="col-12 text-center hand-writing">
-                        <button className="btn btn-primary border-dark border-2 mt-3 col-6">Create Profile</button>
+                        <button className="btn btn-warning border-dark border-2 mt-3 col-6 mb-5">Create Profile</button>
                     </div>
                 </div>)}
                 </div>
-                <img src="/fit4life-bg.jpg" alt="fit4life" className="img-fluid" />
+                <div style={{height: "15px"}}></div>
             </div>
     );
 };

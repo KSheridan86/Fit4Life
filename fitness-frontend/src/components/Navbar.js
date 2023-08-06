@@ -25,7 +25,7 @@ const Navbar = ({ isLoggedIn, onLogin, onLogout }) => {
     <Router>
       <nav className="navbar navbar-expand-lg navbar-light bg-dark sticky-top">
         <div className="container">
-          <Link className="navbar-brand nasa" to="/">
+          <Link className="navbar-brand nasa text-uppercase" to="/">
             <FontAwesomeIcon icon={faHeartbeat} /> Fit4Life
           </Link>
           <button

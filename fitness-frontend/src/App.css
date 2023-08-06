@@ -121,7 +121,7 @@ div > a {
 }
 
 .spacing {
-  margin-bottom: 10rem;
+  margin-bottom: 5rem;
 }
 
 input, button {
@@ -138,4 +138,35 @@ p {
 
 .hand-writing {
   font-family: 'Edu SA Beginner', cursive;
+}
+
+#root {
+  background-image: url("../src/images/leaves.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.nutrition-box {
+  background-color: white;
+}
+
+.glass-box {
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 5px 5px 10px 1px #292b2c;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 10px;
+  max-width: 600px;
+  color: whitesmoke;
+}
+
+.calories, .login {
+  min-height: 100vh;
+}
+
+.white-arrow {
+  color: white;
+  font-size: 2rem;
 }

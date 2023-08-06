@@ -35,8 +35,8 @@ const Nutrition = () => {
 
     return (
         <div className="spacing">
-            <h1 className="fw-bold p-4 pb-1 text-center">Find the food that's right for you!</h1>
-            <div className="p-3 text-center">
+            <h1 className="glass-box m-3 fw-bold p-4 text-center">Find the food that's right for you!</h1>
+            <div className="glass-box m-3 p-3 text-center">
                 <p>
                     Whether you're planning your meals, making healthier choices, or simply curious about 
                     the calorific content of your favorite foods, our carefully curated database provides 
@@ -70,13 +70,18 @@ const Nutrition = () => {
                     </div>
                     <br></br>
                     <div className="col-12 text-center hand-writing">
-                        <button onClick={handleSearch} className="btn btn-primary border-dark border-2 mt-3 col-6">Search</button>
+                        <button onClick={handleSearch} className="btn btn-warning border-dark border-2 mt-3 col-6 ">Search</button>
                     </div>
                 </div>
             </div>
+            <div className="white-arrow d-flex justify-content-evenly align-items-center mt-3">
+                    <FontAwesomeIcon icon={faLongArrowAltDown} />
+                    <FontAwesomeIcon icon={faLongArrowAltDown} />
+                </div>
+            <div style={{height: "15px"}}></div>
 
             {nutritionInfo && (
-                <div className="border border-dark border-2 m-4 p-2 mb-5">
+                <div className="nutrition-box border border-dark rounded border-2 m-4 p-2 mb-5">
                     <h2 className="text-center fw-bold border-bottom border-5">Nutrition Facts</h2>
                     <p className="col text-center text-capitalize fw-bold fs-5 border-bottom border-4">
                         {nutritionInfo.food_name}
@@ -136,7 +141,9 @@ const Nutrition = () => {
                         <div className="col text-end">{nutritionInfo.nf_cholesterol} mg</div>
                     </div>
                 </div>
+                
             )}
+            <div style={{height: "15px"}}></div>
         </div>
     );
 };

@@ -37,9 +37,9 @@ const Login = ({ onLogin }) => {
   }, [data, navigate]);
 
   return (
-    <div>
-      <h1 className="fw-bold p-4 pb-1 text-center">Welcome to Fit4Life!</h1>
-      <div className="p-3 text-center">
+    <div className="login">
+      <h1 className="glass-box m-3 fw-bold p-4 text-center">Welcome to Fit4Life!</h1>
+      <div className="glass-box m-3 p-3 text-center">
         <p>
           Login to your account and embark on a journey towards better health and well-being. 
         </p>
@@ -72,7 +72,7 @@ const Login = ({ onLogin }) => {
               <br></br>
               <div className="col-12 text-center hand-writing">
                 <button 
-                  className="btn btn-primary border-dark border-2 mt-3 col-6"
+                  className="btn btn-primary border-dark border-2 mt-3 col-6 mb-5"
                   type="submit">
                     Login
                 </button>
@@ -80,6 +80,7 @@ const Login = ({ onLogin }) => {
             </div>
           </div>
       </form>
+      <div style={{height: "70px"}}></div>
     </div>
   );
 };
