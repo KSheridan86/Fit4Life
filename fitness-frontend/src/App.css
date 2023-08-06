@@ -127,6 +127,9 @@ div > a {
 input, button {
   box-shadow: 5px 5px 10px 1px #292b2c;
 }
+#no-shadow {
+  box-shadow: none;
+}
 
 h1 {
   text-shadow: 5px 5px 13px #686868;
@@ -141,7 +144,7 @@ p {
 }
 
 #root {
-  background-image: url("../src/images/leaves.jpg");
+  background-image: url("../src/images/fit4life-bg.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -152,21 +155,50 @@ p {
 }
 
 .glass-box {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(255, 255, 255, 0);
   border: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: 5px 5px 10px 1px #292b2c;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-radius: 10px;
   max-width: 600px;
-  color: whitesmoke;
+  color: black;
 }
 
 .calories, .login {
   min-height: 100vh;
 }
 
-.white-arrow {
-  color: white;
+.big-arrow {
   font-size: 2rem;
+}
+
+
+
+/* Back to top btn styles & animation */
+.back-to-top-button {
+  font-size: 2rem;
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  position: fixed;
+  bottom: 95px;
+  right: 30px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+  animation: bounce .5s infinite alternate;
+}
+
+.back-to-top-button.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-15px);
+  }
 }

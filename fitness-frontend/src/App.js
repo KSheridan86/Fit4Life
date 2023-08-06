@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
+import BackToTop from './components/BackToTop';
 import Footer from './components/Footer';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
   return (
     <div>
       <Navbar isLoggedIn={loggedIn} onLogin={handleLogin} onLogout={handleLogout} />
+      <BackToTop />
       <Footer />
     </div>
   );

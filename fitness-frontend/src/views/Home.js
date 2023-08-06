@@ -44,7 +44,7 @@ const Home = () => {
                 <h1 className="fw-bold p-4 pb-1 text-center">
                     Welcome to 
                     <br />
-                    <span className="nasa text-uppercase">Fit4Life</span>
+                    <span className="nasa-black text-uppercase">Fit4Life</span>
                     <br /> 
                     our innovative calorie tracking app!
                 </h1>

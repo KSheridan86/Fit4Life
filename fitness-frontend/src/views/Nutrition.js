@@ -74,7 +74,7 @@ const Nutrition = () => {
                     </div>
                 </div>
             </div>
-            <div className="white-arrow d-flex justify-content-evenly align-items-center mt-3">
+            <div className="big-arrow d-flex justify-content-evenly align-items-center mt-3">
                     <FontAwesomeIcon icon={faLongArrowAltDown} />
                     <FontAwesomeIcon icon={faLongArrowAltDown} />
                 </div>
