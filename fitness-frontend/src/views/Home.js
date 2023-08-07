@@ -38,6 +38,10 @@ const Home = () => {
         navigate(`/confirm-delete/${dataFromLogin}`, { state: { data: dataFromLogin } });
     }};
 
+    const handleEditProfile = () => {
+        navigate("/edit-profile", { state: {profileData, UserData}});
+    };
+
     return (
         <div className="spacing">
             <div className="glass-box border-dark m-3">
@@ -84,7 +88,12 @@ const Home = () => {
                 <p>Gender: {profileData.gender}</p>
                 <p>Goal Weight: {profileData.goal_weight} Kgs</p>
                 <p>Deadline: {profileData.goal_time_frame} weeks</p>
-                <button onClick={handleDeleteProfile} className="btn border-dark">Delete Profile</button>
+                <div className="col-12 text-center hand-writing mb-3">
+                    <button onClick={handleEditProfile} className="btn btn-warning border-dark">Update Profile</button>
+                </div>
+                <div className="col-12 text-center hand-writing mb-3">
+                    <button onClick={handleDeleteProfile} className="btn btn-warning border-dark">Delete Profile</button>
+                </div>
                 </div>
                 ) : (
                 <div className="text-center">

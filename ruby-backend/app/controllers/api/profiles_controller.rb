@@ -25,7 +25,8 @@ module Api
         end
 
         def update
-            @profile = current_user.profiles.find(params[:id])
+            puts "Current User: #{current_user.email}" # Add this line for debugging
+            @profile = current_user.profile
             if @profile.update(profile_params)
                 render json: @profile
             else

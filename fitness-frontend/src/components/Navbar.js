@@ -7,6 +7,7 @@ import Nutrition from '../views/Nutrition';
 import Login from '../views/Login';
 import Logout from '../views/Logout';
 import ConfirmDelete from '../views/ConfirmDelete';
+import EditProfile from '../views/EditProfile';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStream, faHeartbeat } from '@fortawesome/free-solid-svg-icons';
 
@@ -82,6 +83,7 @@ const Navbar = ({ isLoggedIn, onLogin, onLogout }) => {
         <Route path="/login" element={<Login onLogin={onLogin} onLogout={onLogout} />} /> 
         <Route path="/logout" element={<Logout onLogin={onLogin} onLogout={onLogout} />} />
         <Route path="/confirm-delete/:id" element={<ConfirmDelete />} />
+        <Route path="/edit-profile" element={<EditProfile />} />
       </Routes>
     </Router>
   );

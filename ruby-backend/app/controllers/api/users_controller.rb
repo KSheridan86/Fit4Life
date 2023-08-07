@@ -1,7 +1,8 @@
 module Api
     class UsersController < ApplicationController
         before_action :authenticate_user!
-        protect_from_forgery with: :exception, unless: -> { request.format.json? }
+        skip_before_action :verify_authenticity_token
+        # protect_from_forgery with: :exception, unless: -> { request.format.json? }
 
         def show
             @user = User.includes(:profile).find(params[:id])

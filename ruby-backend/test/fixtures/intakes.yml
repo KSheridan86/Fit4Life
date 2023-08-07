@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  breakfast: 1
+  lunch: 1
+  dinner: 1
+  snacks: 1
+  date: 2023-08-07 12:44:58
+
+two:
+  breakfast: 1
+  lunch: 1
+  dinner: 1
+  snacks: 1
+  date: 2023-08-07 12:44:58
