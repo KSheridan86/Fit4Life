@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   resource :profile, only: [:new, :create, :edit, :update, :destroy]
-  resources :workouts, except: [:index, :show]
   devise_scope :user do
     delete 'users', to: 'registrations#destroy'
   end
@@ -20,7 +19,7 @@ Rails.application.routes.draw do
     get 'users', to: 'users#show'
 
     resources :users, only: [] do
-      resources :workouts, except: [:index, :show]
+      # resources :workouts, except: [:index, :show]
     end
   end
 end
