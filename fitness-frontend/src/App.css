@@ -165,8 +165,8 @@ p {
   color: black;
 }
 
-.calories, .login {
-  min-height: 100vh;
+.calories, .login, .logout, .delete {
+  min-height: 80vh;
 }
 
 .big-arrow {

@@ -25,13 +25,20 @@ const ConfirmDelete = () => {
       };
 
     return (
-        <div>
-        <h1>Confirm Delete</h1>
-        <p>Delete profile with ID: {id}</p>
-        <button onClick={handleDeleteProfile} className="btn border-dark">
-          Confirm Delete
-        </button>
-      </div>
+        <div className='delete'>
+          <div className="glass-box m-5 p-3 text-center">
+            <h1>Are you sure?</h1>
+            <h4>This is a permanent action.</h4>
+            <p>Delete profile with ID: {id}</p>
+          </div>
+          <div className="col-12 text-center hand-writing">
+            <button 
+              onClick={handleDeleteProfile}  
+              className="btn btn-warning border-dark border-2 mt-3 col-6 ">
+                Delete??
+            </button>
+          </div>
+        </div>
     );
 };
 
