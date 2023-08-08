@@ -8,13 +8,15 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
 
   const handleLogin = () => {
-    // Simulate a login action here
     setLoggedIn(true);
   };
 
   const handleLogout = () => {
-    // Simulate a logout action here
     setLoggedIn(false);
+    // Remove storedProfileData from local storage
+    localStorage.removeItem('profileData');
+    localStorage.removeItem('UserData');
+    localStorage.removeItem('userId');
   };
 
   return (

@@ -3,31 +3,51 @@ import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
+// api is the base URL of the Rails API
 const api = axios.create({
   baseURL: 'http://localhost:4000', // Replace with the actual base URL of your Rails API
   withCredentials: true, // This ensures that the CSRF token is sent with the request
 });
 
-const Home = () => {
+const Home = ({loggedIn}) => {
     const [UserData, setUserData] = useState(null);
     const [profileData, setProfileData] = useState(null);
     const location = useLocation();
     const navigate = useNavigate();
     const dataFromLogin = location.state?.data;
-
+    console.log("Are we logged in?", loggedIn);
+    
     useEffect(() => {
-        if (dataFromLogin !== undefined) {
-            fetchProfileData(dataFromLogin);
+        // Check if UserData & profileData exists in local storage
+        const storedProfileData = JSON.parse(localStorage.getItem('profileData'));
+        const storedUserData = JSON.parse(localStorage.getItem('UserData'));
+        if (storedProfileData && storedUserData) {
+            setProfileData(storedProfileData);
+            setUserData(storedUserData);
         }
-    }, [dataFromLogin]);
+
+        if (dataFromLogin !== undefined || loggedIn) {
+            fetchProfileData(dataFromLogin); //this here is possibly the answer, does data/fromLogin persist?
+        } else if (location.state?.userId) {
+            fetchProfileData(location.state.userId);
+        }
+    
+    }, [dataFromLogin, loggedIn, location.state?.userId]);
 
     const fetchProfileData = async (userId) => {
         try {
             const response = await api.get(`/api/users/${userId}`);
             console.log('User data:', response.data);
             console.log('Profile Data:', response.data.profile)
+
             setUserData(response.data);
+            // Store the profileData in local storage
+            localStorage.setItem('UserData', JSON.stringify(response.data));
+
             setProfileData(response.data.profile);
+            // Store the profileData in local storage
+            localStorage.setItem('profileData', JSON.stringify(response.data.profile));
+
         } catch (error) {
             console.error('Failed to fetch profile data:', error);
         }
@@ -36,6 +56,8 @@ const Home = () => {
     const handleDeleteProfile = () => {
         if (dataFromLogin !== undefined) {
         navigate(`/confirm-delete/${dataFromLogin}`, { state: { data: dataFromLogin } });
+    } else if (location.state?.userId) {
+        navigate(`/confirm-delete/${location.state?.userId}`, { state: { data: location.state?.userId } });
     }};
 
     const handleEditProfile = () => {

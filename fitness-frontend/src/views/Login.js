@@ -23,7 +23,7 @@ const Login = ({ onLogin }) => {
         },
       });
       setData(response.data.user.id)
-      onLogin();
+      localStorage.setItem('userId', JSON.stringify(response.data.user.id));
       
     } catch (error) {
         console.error('Error while making the API call:', error);
@@ -32,9 +32,10 @@ const Login = ({ onLogin }) => {
 
   useEffect(() => {
     if (data !== null) {
+      onLogin()
       navigate('/', { state: {data}})
     }
-  }, [data, navigate]);
+  }, [data, navigate, onLogin]);
 
   return (
     <div className="login">

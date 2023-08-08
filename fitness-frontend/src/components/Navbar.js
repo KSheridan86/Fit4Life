@@ -24,7 +24,7 @@ const Navbar = ({ isLoggedIn, onLogin, onLogout }) => {
 
   return (
     <Router>
-      <nav className="navbar navbar-expand-lg navbar-light bg-dark sticky-top">
+      <nav className="navbar navbar-expand-lg navbar-light bg-dark sticky-top text-uppercase">
         <div className="container">
           <Link className="navbar-brand nasa text-uppercase" to="/">
             <FontAwesomeIcon icon={faHeartbeat} /> Fit4Life
@@ -56,18 +56,19 @@ const Navbar = ({ isLoggedIn, onLogin, onLogout }) => {
                   Calories
                 </Link>
               </li>
+              { isLoggedIn ?
               <li className="nav-item">
                 <Link className="nav-link nasa" to="/nutrition" onClick={closeNav}>
                   Nutrition
                 </Link>
-              </li>
+              </li> : null}
               { isLoggedIn ? 
-                <li className="nav-item"> {/* New list item for the Login link */}
+                <li className="nav-item">
                   <Link className="nav-link nasa" to="/logout" onClick={closeNav}>
                     Logout
                   </Link>
                 </li> : 
-                <li className="nav-item"> {/* New list item for the Login link */}
+                <li className="nav-item">
                   <Link className="nav-link nasa" to="/login" onClick={closeNav}>
                     Login
                   </Link>
@@ -77,7 +78,7 @@ const Navbar = ({ isLoggedIn, onLogin, onLogout }) => {
         </div>
       </nav>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home loggedIn={isLoggedIn} />} />
         <Route path="/calories" element={<Calories />} />
         <Route path="/nutrition" element={<Nutrition />} />
         <Route path="/login" element={<Login onLogin={onLogin} onLogout={onLogout} />} /> 

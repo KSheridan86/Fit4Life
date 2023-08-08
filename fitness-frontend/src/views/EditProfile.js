@@ -32,11 +32,14 @@ const EditProfile = () => {
         event.preventDefault();
         try {
             const response = await api.put(`/api/profiles/${UserData.id}`, { profile });
+            if (response) {
+                localStorage.setItem('profileData', JSON.stringify(profile));
+            }
             console.log('Profile updated successfully', response.data);
         } catch (error) {
             console.error('Failed to update profile:', error);
         }
-        navigate("/")
+        navigate("/", { state: { userId: UserData.id } })
     };
 
     return (

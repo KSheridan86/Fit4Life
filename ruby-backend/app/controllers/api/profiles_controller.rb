@@ -1,7 +1,8 @@
 module Api
     class ProfilesController < ApplicationController
         before_action :authenticate_user!
-        before_action :set_current_user
+        # before_action :set_current_user
+        before_action :set_profile, only: [:show, :update, :destroy]
         skip_before_action :verify_authenticity_token
         # protect_from_forgery with: :exception, unless: -> { request.format.json? }
 
@@ -40,9 +41,9 @@ module Api
             puts "Profile ID to delete: #{params[:id]}" # Add this line for debugging
             if @profile.nil?
                 puts "Profile not found!" # Add this line for debugging
-              else
+            else
                 @profile.destroy
-              end
+            end
             
             head :no_content
         end
@@ -50,9 +51,13 @@ module Api
 
         private
 
-        def set_current_user
-            @current_user ||= User.find_by(authentication_token: request.headers['Authorization'])
+        def set_profile
+            @profile = current_user.profile
         end
+        
+        # def set_current_user
+        #     @current_user ||= User.find_by(authentication_token: request.headers['Authorization'])
+        # end
 
         def profile_params
             params.require(:profile).permit(:age, :height, :weight, :gender, :goal_weight, :goal_time_frame)
