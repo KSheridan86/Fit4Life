@@ -73,7 +73,7 @@ const Login = ({ onLogin }) => {
               <br></br>
               <div className="col-12 text-center hand-writing">
                 <button 
-                  className="btn btn-primary border-dark border-2 mt-3 col-6 mb-5"
+                  className="btn btn-warning border-dark border-2 mt-3 col-6 mb-5"
                   type="submit">
                     Login
                 </button>

@@ -10,6 +10,7 @@ const api = axios.create({
 
 const ConfirmDelete = () => {
     const [UserData, setUserData] = useState(null);
+    const [loading, setLoading] = useState(false); // New state variable
     const { id } = useParams();
     const navigate = useNavigate();
 
@@ -21,7 +22,7 @@ const ConfirmDelete = () => {
       }
       console.log("User Data:", UserData)
 
-  }, []);
+  }, [UserData]);
 
   useEffect(() => {
     // This will log the updated UserData after the initial render
@@ -30,13 +31,14 @@ const ConfirmDelete = () => {
 
     const handleDeleteProfile = async () => {
         try {
+          setLoading(true); // Set loading to true when starting delete action
           await api.delete(`/api/profiles/${id}`);
-          // Perform any necessary cleanup or actions after successful deletion
-          // For example, you could redirect to the home page or show a success message
-          // window.location.replace('/');
+          localStorage.removeItem('profileData');
+          setLoading(false); // Set loading back to false after delete action
           navigate('/'); 
         } catch (error) {
           console.error('Failed to delete profile:', error);
+          setLoading(false); // Set loading back to false after delete action
         }
       };
 
@@ -55,9 +57,12 @@ const ConfirmDelete = () => {
           <div className="col-12 text-center hand-writing">
             <button 
               onClick={handleDeleteProfile}  
-              className="btn btn-warning border-dark border-2 mt-3 col-6 ">
-                Delete??
+              className="btn btn-warning border-dark border-2 mt-3 col-6 "
+              disabled={loading} // Disable the button while loading is true
+              >
+                {loading ? 'Deleting...' : 'Delete Profile'}
             </button>
+            {loading ? <p className="glass-box m-5 p-3 text-center">This may take a few seconds.....</p> : null}
           </div>
         </div>
     );

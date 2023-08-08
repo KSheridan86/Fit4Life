@@ -21,8 +21,10 @@ const Home = ({loggedIn}) => {
         // Check if UserData & profileData exists in local storage
         const storedProfileData = JSON.parse(localStorage.getItem('profileData'));
         const storedUserData = JSON.parse(localStorage.getItem('UserData'));
-        if (storedProfileData && storedUserData) {
+        if (storedProfileData) {
             setProfileData(storedProfileData);
+        }
+        if (storedUserData) {
             setUserData(storedUserData);
         }
 
@@ -71,8 +73,6 @@ const Home = ({loggedIn}) => {
                     Welcome to 
                     <br />
                     <span className="nasa-black text-uppercase">Fit4Life</span>
-                    <br /> 
-                    our innovative calorie tracking app!
                 </h1>
             </div>
             
@@ -83,8 +83,7 @@ const Home = ({loggedIn}) => {
                 </p>
                 <hr />
                 <p>
-                    Our app not only lets you effortlessly track your daily 
-                    caloric intake but also offers a comprehensive food search feature. 
+                    Our app offers a comprehensive food search feature. 
                 </p>
                 <hr />
                 <p>
@@ -92,30 +91,43 @@ const Home = ({loggedIn}) => {
                     a wide variety of foods. 
                 </p>
                 <hr />
-                <p className="border-bottom border-3 border-dark pb-3">
+                <p className="">
                     Whether you're planning your meals, curious about the calorie content of your favorite dishes, 
                     or seeking healthier alternatives, we have got you covered.
                 </p>
+                <hr />
+                {!loggedIn ? (
+                    <div>
+                        <p className="pb-3">
+                            Sign up today for free and start tracking your nutrition!
+                        </p>
+                        <div className="col-12 text-center hand-writing mb-3">
+                            <button className="btn btn-warning border-dark">Sign Up</button>
+                        </div>
+                    </div>
+                    ) : (null)
+                }
                 
             </div>
-            
-            <div className="glass-box m-3 mb-5 border-dark">
-            <h1 className="hand-writing text-center mt-3 mb-3">Welcome {UserData ? UserData.username : 'Friend!'}!</h1>
+            {loggedIn ? (
+            <div className="glass-box m-3 mb-5 border-dark text-center">
+                <h1 className="hand-writing text-center mt-3 mb-3">
+                    Welcome {UserData ? UserData.username : 'Friend!'}!
+                </h1>
                 {profileData ? (
                 <div>
-                
-                <p>Age: {profileData.age}</p>
-                <p>Height: {profileData.height} Cms</p>
-                <p>Weight: {profileData.weight} Kgs</p>
-                <p>Gender: {profileData.gender}</p>
-                <p>Goal Weight: {profileData.goal_weight} Kgs</p>
-                <p>Deadline: {profileData.goal_time_frame} weeks</p>
-                <div className="col-12 text-center hand-writing mb-3">
-                    <button onClick={handleEditProfile} className="btn btn-warning border-dark">Update Profile</button>
-                </div>
-                <div className="col-12 text-center hand-writing mb-3">
-                    <button onClick={handleDeleteProfile} className="btn btn-warning border-dark">Delete Profile</button>
-                </div>
+                    <p>Age: {profileData.age}</p>
+                    <p>Height: {profileData.height} Cms</p>
+                    <p>Weight: {profileData.weight} Kgs</p>
+                    <p>Gender: {profileData.gender}</p>
+                    <p>Goal Weight: {profileData.goal_weight} Kgs</p>
+                    <p>Deadline: {profileData.goal_time_frame} weeks</p>
+                    <div className="col-12 text-center hand-writing mb-3">
+                        <button onClick={handleEditProfile} className="btn btn-warning border-dark">Update Profile</button>
+                    </div>
+                    <div className="col-12 text-center hand-writing mb-3">
+                        <button onClick={handleDeleteProfile} className="btn btn-warning border-dark">Delete Profile</button>
+                    </div>
                 </div>
                 ) : (
                 <div className="text-center">
@@ -127,9 +139,11 @@ const Home = ({loggedIn}) => {
                         <button className="btn btn-warning border-dark border-2 mt-3 col-6 mb-5">Create Profile</button>
                     </div>
                 </div>)}
-                </div>
-                <div style={{height: "15px"}}></div>
             </div>
+                ) : (null)
+            }
+                <div style={{height: "50px"}}></div>
+        </div>
     );
 };
 
