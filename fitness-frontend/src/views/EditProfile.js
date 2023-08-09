@@ -10,7 +10,6 @@ const api = axios.create({
 const EditProfile = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    console.log("Location state:", location.state)
     const { profileData } = location.state;
     const { UserData } = location.state;
     const [profile, setProfile] = useState({
@@ -25,7 +24,6 @@ const EditProfile = () => {
     const handleInputChange = event => {
         const { name, value } = event.target;
         setProfile(prevProfile => ({ ...prevProfile, [name]: value }));
-        console.log(profile);
     };
 
     const handleSubmit = async (event) => {

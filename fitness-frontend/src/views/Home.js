@@ -15,7 +15,6 @@ const Home = ({loggedIn}) => {
     const location = useLocation();
     const navigate = useNavigate();
     const dataFromLogin = location.state?.data;
-    console.log("Are we logged in?", loggedIn);
     
     useEffect(() => {
         // Check if UserData & profileData exists in local storage
@@ -39,8 +38,8 @@ const Home = ({loggedIn}) => {
     const fetchProfileData = async (userId) => {
         try {
             const response = await api.get(`/api/users/${userId}`);
-            console.log('User data:', response.data);
-            console.log('Profile Data:', response.data.profile)
+            // console.log('User data:', response.data);
+            // console.log('Profile Data:', response.data.profile)
 
             setUserData(response.data);
             // Store the profileData in local storage
@@ -51,9 +50,13 @@ const Home = ({loggedIn}) => {
             localStorage.setItem('profileData', JSON.stringify(response.data.profile));
 
         } catch (error) {
-            console.error('Failed to fetch profile data:', error);
+            // console.error('Failed to fetch profile data:', error);
         }
     };
+
+    const handleSignUp = () => {
+        navigate("/signup");
+    }
 
     const handleDeleteProfile = () => {
         if (dataFromLogin !== undefined) {
@@ -64,6 +67,10 @@ const Home = ({loggedIn}) => {
 
     const handleEditProfile = () => {
         navigate("/edit-profile", { state: {profileData, UserData}});
+    };
+
+    const handleCreateProfile = () => {
+        navigate("/create-profile", { state: {profileData, UserData}});
     };
 
     return (
@@ -102,7 +109,11 @@ const Home = ({loggedIn}) => {
                             Sign up today for free and start tracking your nutrition!
                         </p>
                         <div className="col-12 text-center hand-writing mb-3">
-                            <button className="btn btn-warning border-dark">Sign Up</button>
+                            <button
+                                onClick={handleSignUp}
+                                className="btn btn-warning border-dark">
+                                    Sign Up
+                            </button>
                         </div>
                     </div>
                     ) : (null)
@@ -136,7 +147,11 @@ const Home = ({loggedIn}) => {
                     <h5>But...</h5>
                     <p>Users who create profiles are 8 times more likely to reach their goals!</p>
                     <div className="col-12 text-center hand-writing">
-                        <button className="btn btn-warning border-dark border-2 mt-3 col-6 mb-5">Create Profile</button>
+                        <button 
+                            onClick={handleCreateProfile}
+                            className="btn btn-warning border-dark border-2 mt-3 col-6 mb-5">
+                                Create Profile
+                        </button>
                     </div>
                 </div>)}
             </div>

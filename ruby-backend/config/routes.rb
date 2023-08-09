@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :profiles, only: [:index, :show, :create, :update, :destroy]
-    resources :users, only: [:show]
+    resources :users, only: [:show, :create, :update, :destroy]
     post 'login', to: 'sessions#create'
     post 'logout', to: 'sessions#destroy'
     get 'profile', to: 'profiles#show'

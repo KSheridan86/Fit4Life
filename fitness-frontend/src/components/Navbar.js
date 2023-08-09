@@ -4,10 +4,12 @@ import '../App.css';
 import Home from '../views/Home';
 import Calories from '../views/Calories';
 import Nutrition from '../views/Nutrition';
+import SignUp from '../views/SignUp';
 import Login from '../views/Login';
 import Logout from '../views/Logout';
 import ConfirmDelete from '../views/ConfirmDelete';
 import EditProfile from '../views/EditProfile';
+import CreateProfile from '../views/CreateProfile';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStream, faHeartbeat } from '@fortawesome/free-solid-svg-icons';
 
@@ -81,10 +83,12 @@ const Navbar = ({ isLoggedIn, onLogin, onLogout }) => {
         <Route path="/" element={<Home loggedIn={isLoggedIn} />} />
         <Route path="/calories" element={<Calories />} />
         <Route path="/nutrition" element={<Nutrition />} />
+        <Route path="/signup" element={<SignUp onLogin={onLogin} />} />
         <Route path="/login" element={<Login onLogin={onLogin} onLogout={onLogout} />} /> 
         <Route path="/logout" element={<Logout onLogin={onLogin} onLogout={onLogout} />} />
         <Route path="/confirm-delete/:id" element={<ConfirmDelete />} />
         <Route path="/edit-profile" element={<EditProfile />} />
+        <Route path="/create-profile" element={<CreateProfile />} />
       </Routes>
     </Router>
   );

@@ -20,14 +20,13 @@ const ConfirmDelete = () => {
       if (storedUserData) {
           setUserData(storedUserData);
       }
-      console.log("User Data:", UserData)
 
-  }, [UserData]);
+  }, []);
 
-  useEffect(() => {
-    // This will log the updated UserData after the initial render
-    console.log('User Data:', UserData);
-}, [UserData]);
+//   useEffect(() => {
+//     // This will log the updated UserData after the initial render
+//     console.log('User Data:', UserData);
+// }, [UserData]);
 
     const handleDeleteProfile = async () => {
         try {
