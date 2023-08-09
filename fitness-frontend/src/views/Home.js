@@ -112,7 +112,7 @@ const Home = ({loggedIn}) => {
                 {!loggedIn ? (
                     <div>
                         <p className="pb-3">
-                            Sign up today for free and start tracking your nutrition!
+                            Sign up today for free and get access to our comprehensive nutritional information!
                         </p>
                         <div className="col-12 text-center hand-writing mb-3">
                             <button

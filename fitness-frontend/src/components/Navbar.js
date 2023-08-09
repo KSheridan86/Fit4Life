@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import '../App.css';
 import Home from '../views/Home';
-import Calories from '../views/Calories';
 import Nutrition from '../views/Nutrition';
 import SignUp from '../views/SignUp';
 import DeleteUser from '../views/DeleteUser';
@@ -54,11 +53,6 @@ const Navbar = ({ isLoggedIn, onLogin, onLogout }) => {
                   Home
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link nasa" to="/calories" onClick={closeNav}>
-                  Calories
-                </Link>
-              </li>
               { isLoggedIn ?
               <li className="nav-item">
                 <Link className="nav-link nasa" to="/nutrition" onClick={closeNav}>
@@ -82,7 +76,6 @@ const Navbar = ({ isLoggedIn, onLogin, onLogout }) => {
       </nav>
       <Routes>
         <Route path="/" element={<Home loggedIn={isLoggedIn} />} />
-        <Route path="/calories" element={<Calories />} />
         <Route path="/nutrition" element={<Nutrition />} />
         <Route path="/signup" element={<SignUp onLogin={onLogin} />} />
         <Route path="/delete-user" element={<DeleteUser onLogout={onLogout} />} />
