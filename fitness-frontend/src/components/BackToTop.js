@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 
 const BackToTop = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -28,7 +26,6 @@ const BackToTop = () => {
             className={`back-to-top-button ${isVisible ? 'visible' : ''}`}
             onClick={scrollToTop}>
                 <img src={process.env.PUBLIC_URL + '/images/back-to-top.png'} alt="Back to top" />
-            {/* <FontAwesomeIcon icon={faArrowUp} /> */}
         </button>
     );
 };

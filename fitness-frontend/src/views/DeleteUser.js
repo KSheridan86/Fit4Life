@@ -18,13 +18,11 @@ const DeleteUser = ({onLogout}) => {
         if (storedUserData) {
             setUserData(storedUserData);
         }
-  
     }, []);
 
     const handleDelete = async () => {
         try {
         setIsDeleting(true);
-
         const response = await api.delete('/users');
         console.log('User data:', response.data);
             await onLogout();
@@ -37,27 +35,30 @@ const DeleteUser = ({onLogout}) => {
     };
 
     return (
-        <div className="login">
+      <div className='container'>
+        <div className="row justify-content-center login">
+          <div className="col-12 col-lg-6">
             <div className="glass-box m-5 p-3 text-center">
-                <h1>Are you sure?</h1>
-                <h4>This is a permanent action.</h4>
-                <p>Delete account for <p className="text-capitalize">{UserData ? UserData.username : null} ?</p></p>
+              <h1>Are you sure?</h1>
+              <h4>This is a permanent action.</h4>
+              <p>Delete account for {UserData ? <span className="text-capitalize">{UserData.username}</span> : null} ?</p>
             </div>
-
             <div className="col-12 text-center hand-writing">
-                <button
-                    className="btn btn-warning"
-                    onClick={handleDelete}
-                    disabled={isDeleting}>
-                    {isDeleting ? 'Deleting...' : 'Delete Account'}
-                </button>
-                {isDeleting ? 
-                    <p className="glass-box m-5 p-3 text-center">
-                        This may take a few seconds.....
-                    </p> : 
+              <button
+                className="btn btn-warning"
+                onClick={handleDelete}
+                disabled={isDeleting}>
+                {isDeleting ? 'Deleting...' : 'Delete Account'}
+              </button>
+              {isDeleting ?
+                <p className="glass-box m-5 p-3 text-center">
+                  This may take a few seconds.....
+                </p> :
                 null}
             </div>
+          </div>
         </div>
+      </div>
     );
 };
 

@@ -1,93 +1,111 @@
-/* custom nasa font */
+/* custom nasa font & text effects*/
 @font-face {
   font-family: 'NasaFont';
   src: url('./fonts/nasa.woff') format('woff');
-  /* Add other font properties if needed */
 }
-
 .nasa {
   font-family: 'NasaFont', sans-serif;
   color: antiquewhite;
 }
-
 .nasa-black {
   font-family: 'NasaFont', sans-serif;
   color: black;
+}
+.hand-writing {
+  font-family: 'Edu SA Beginner', cursive;
+}
+
+/* Main background image */
+#root {
+  background-image: url("../src/images/fit4life-bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 /* Navbar styles */
 .nav-link, .navbar-brand, .navbar-toggler-icon {
   color: antiquewhite !important;
 }
-
 .navbar-toggler {
   color: #292b2c !important;
   border: 2px solid antiquewhite !important;
   border-color: antiquewhite !important;
 }
-
 .navbar-toggler-icon {
   font-size: 1.2rem;
   padding: 3px;
 }
-
-
-
 .content-wrapper {
   position: relative;
   z-index: 1;
   transform: translateY(0);
   transition: transform 0.3s ease;
 }
-
 .navbar-open .content-wrapper {
   transform: translateY(50px);
 }
 
-
-/* Hero image */
-.home-container {
-  position: relative;
-  width: 100vw;
-  overflow: hidden;
+/* General spacing, shadows and effects for divs */
+.spacing {
+  margin-bottom: 5rem;
+}
+input, button {
+  box-shadow: 5px 5px 10px 1px #292b2c;
+}
+#no-shadow {
+  box-shadow: none;
+}
+h1 {
+  text-shadow: 5px 5px 13px #686868;
+}
+p {
+  font-family: 'Noto Sans JP', sans-serif;
+}
+.nutrition-box {
+  background-color: white;
+}
+.glass-box {
+  background-color: rgba(255, 255, 255, 0);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 5px 5px 10px 1px #292b2c;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 10px;
+  max-width: 600px;
+  color: black;
+}
+.calories, .login, .logout, .delete {
+  min-height: 80vh;
+}
+.big-arrow {
+  font-size: 2rem;
 }
 
-.image-container {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  z-index: -1;
-}
-
-.img-zoom {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.text-container {
-  position: relative;
-  z-index: 1;
-  background-color: rgb(41, 43, 44, .8);
-  color: whitesmoke;
-}
-
-/* Embedded Video */
-#vid {
-  background-color: #000;
-  text-align: center;
-  margin-bottom: -.5rem;
-}
-
-iframe {
-  height: 20rem;
+/* Back to top btn styles & animation */
+.back-to-top-button {
+  font-size: 2rem;
+  background-color: rgba(255, 255, 255, 0);
   border: none;
+  position: fixed;
+  bottom: 95px;
+  right: 30px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+  animation: bounce .5s infinite alternate;
 }
-
-.hubble-image {
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
+.back-to-top-button.visible {
+  opacity: 1;
+  visibility: visible;
+}
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-15px);
+  }
 }
 
 /* Footer */
@@ -105,6 +123,7 @@ div > a {
   text-decoration: none;
 }
 
+/* Media queries */
 @media (max-width: 992px) {
   .navbar-collapse {
     position: absolute;
@@ -117,88 +136,5 @@ div > a {
     max-height: calc(100vh - 12vh);
     transition: max-height 0.3s ease;
     margin-top: 0;
-  }
-}
-
-.spacing {
-  margin-bottom: 5rem;
-}
-
-input, button {
-  box-shadow: 5px 5px 10px 1px #292b2c;
-}
-#no-shadow {
-  box-shadow: none;
-}
-
-h1 {
-  text-shadow: 5px 5px 13px #686868;
-}
-
-p {
-  font-family: 'Noto Sans JP', sans-serif;
-}
-
-.hand-writing {
-  font-family: 'Edu SA Beginner', cursive;
-}
-
-#root {
-  background-image: url("../src/images/fit4life-bg.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
-
-.nutrition-box {
-  background-color: white;
-}
-
-.glass-box {
-  background-color: rgba(255, 255, 255, 0);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 5px 5px 10px 1px #292b2c;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-radius: 10px;
-  max-width: 600px;
-  color: black;
-}
-
-.calories, .login, .logout, .delete {
-  min-height: 80vh;
-}
-
-.big-arrow {
-  font-size: 2rem;
-}
-
-
-
-/* Back to top btn styles & animation */
-.back-to-top-button {
-  font-size: 2rem;
-  background-color: rgba(255, 255, 255, 0);
-  border: none;
-  position: fixed;
-  bottom: 95px;
-  right: 30px;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s, visibility 0.3s;
-  animation: bounce .5s infinite alternate;
-}
-
-.back-to-top-button.visible {
-  opacity: 1;
-  visibility: visible;
-}
-
-@keyframes bounce {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-15px);
   }
 }

@@ -5,12 +5,12 @@ import axios from 'axios';
 
 const api = axios.create({
   baseURL: 'http://localhost:4000', // Replace with the actual base URL of your Rails API
-  withCredentials: true, // This ensures that the CSRF token is sent with the request
+  withCredentials: true,
 });
 
 const ConfirmDelete = () => {
     const [UserData, setUserData] = useState(null);
-    const [loading, setLoading] = useState(false); // New state variable
+    const [loading, setLoading] = useState(false);
     const { id } = useParams();
     const navigate = useNavigate();
 
@@ -20,50 +20,48 @@ const ConfirmDelete = () => {
       if (storedUserData) {
           setUserData(storedUserData);
       }
-
   }, []);
-
-//   useEffect(() => {
-//     // This will log the updated UserData after the initial render
-//     console.log('User Data:', UserData);
-// }, [UserData]);
 
     const handleDeleteProfile = async () => {
         try {
-          setLoading(true); // Set loading to true when starting delete action
+          setLoading(true);
           await api.delete(`/api/profiles/${id}`);
           localStorage.removeItem('profileData');
-          setLoading(false); // Set loading back to false after delete action
+          setLoading(false);
           navigate('/'); 
         } catch (error) {
           console.error('Failed to delete profile:', error);
-          setLoading(false); // Set loading back to false after delete action
+          setLoading(false);
         }
       };
 
       // Render only when UserData is available
     if (UserData === null) {
-      return null; // or a loading indicator, or any other content
+      return null;
   }
 
     return (
-        <div className='delete'>
-          <div className="glass-box m-5 p-3 text-center">
-            <h1>Are you sure?</h1>
-            <h4>This is a permanent action.</h4>
-            <p>Delete profile for {UserData.username}?</p>
-          </div>
-          <div className="col-12 text-center hand-writing">
-            <button 
-              onClick={handleDeleteProfile}  
-              className="btn btn-warning border-dark border-2 mt-3 col-6 "
-              disabled={loading} // Disable the button while loading is true
+      <div className='container'>
+        <div className="row justify-content-center delete">
+          <div className="col-12 col-lg-6">
+            <div className="glass-box m-5 p-3 text-center">
+              <h1>Are you sure?</h1>
+              <h4>This is a permanent action.</h4>
+              <p>Delete profile for {UserData.username}?</p>
+            </div>
+            <div className="col-12 text-center hand-writing">
+              <button
+                onClick={handleDeleteProfile}
+                className="btn btn-warning border-dark border-2 mt-3 col-6"
+                disabled={loading}
               >
                 {loading ? 'Deleting...' : 'Delete Profile'}
-            </button>
-            {loading ? <p className="glass-box m-5 p-3 text-center">This may take a few seconds.....</p> : null}
+              </button>
+              {loading ? <p className="glass-box m-5 p-3 text-center">This may take a few seconds.....</p> : null}
+            </div>
           </div>
         </div>
+      </div>
     );
 };
 

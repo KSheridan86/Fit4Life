@@ -6,7 +6,7 @@ const Footer = () => {
             <div className="container">
                 <div className="social-icons d-flex justify-content-between">
                     <a
-                        href="http://instagram.com/nasahubble/"
+                        href="http://instagram.com"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="mx-4"
@@ -14,7 +14,7 @@ const Footer = () => {
                         <i className="fab fa-instagram fa-lg"></i>
                     </a>
                     <a
-                        href="http://youtube.com/channel/UCqvjEkH_41m4DYaoNQwk4Bw"
+                        href="http://youtube.com"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="mx-4"
@@ -22,7 +22,7 @@ const Footer = () => {
                         <i className="fab fa-youtube fa-lg"></i>
                     </a>
                     <a
-                        href="http://facebook.com/NASAHubble/"
+                        href="http://facebook.com"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="mx-4"
@@ -30,7 +30,7 @@ const Footer = () => {
                         <i className="fab fa-facebook fa-lg"></i>
                     </a>
                     <a
-                        href="http://twitter.com/nasahubble"
+                        href="http://twitter.com"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="mx-4"

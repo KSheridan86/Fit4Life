@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:4000/api', // Replace with the actual base URL of your Rails API
-  withCredentials: true, // This ensures that the CSRF token is sent with the request
+  baseURL: 'http://localhost:4000/api',
+  withCredentials: true,
 });
 
 const Logout = ({ onLogout }) => {
@@ -22,16 +22,20 @@ const Logout = ({ onLogout }) => {
     };
 
     return (
-        <div className="logout">
+      <div className='container'>
+        <div className="row justify-content-center logout">
+          <div className="col-12 col-lg-6">
             <h1 className="glass-box fw-bold p-4 m-5 text-center">Are you sure you want to Logout?</h1>
             <div className="col-12 text-center hand-writing">
-                <button 
-                    onClick={handleLogout}
-                    className="btn btn-warning border-dark border-2 col-6">
-                        Logout
-                </button>
+              <button 
+                onClick={handleLogout}
+                className="btn btn-warning border-dark border-2 col-6">
+                  Logout
+              </button>
             </div>
+          </div>
         </div>
+      </div>
     );
 };
 

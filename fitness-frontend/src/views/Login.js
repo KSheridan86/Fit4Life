@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:4000/api', // Replace with the actual base URL of your Rails API
-  withCredentials: true, // This ensures that the CSRF token is sent with the request
+  baseURL: 'http://localhost:4000/api',
+  withCredentials: true,
 });
 
 const Login = ({ onLogin }) => {
@@ -38,50 +38,57 @@ const Login = ({ onLogin }) => {
   }, [data, navigate, onLogin]);
 
   return (
-    <div className="login">
-      <h1 className="glass-box m-3 fw-bold p-4 text-center">Welcome to Fit4Life!</h1>
-      <div className="glass-box m-3 p-3 text-center">
-        <p>
-          Login to your account and embark on a journey towards better health and well-being. 
-        </p>
-        <hr />
-        <p>  
-          With our powerful tools, you can easily track your nutrition, monitor your calories, 
-          and make informed choices about your diet. 
-        </p>
-      </div>
-      <hr />
-      <form onSubmit={handleLogin}>
-        <div className="d-flex justify-content-center align-items-center">
-          <div className="row">
-            <div className="col-12">
-              <input
-                className="text-center border border-dark border-2 p-2 form-control mb-2 hand-writing" 
-                type="email"
-                placeholder="Enter Email"
-                value={email} 
-                onChange={(e) => setEmail(e.target.value)} 
-              />
-              <br></br>
-              <input
-                className="text-center border border-dark border-2 p-2 form-control mb-2 hand-writing" 
-                type="password"
-                placeholder="Enter Password"
-                value={password} 
-                onChange={(e) => setPassword(e.target.value)} />
-              </div>
-              <br></br>
-              <div className="col-12 text-center hand-writing">
-                <button 
-                  className="btn btn-warning border-dark border-2 mt-3 col-6 mb-5"
-                  type="submit">
-                    Login
-                </button>
-              </div>
+    <div className="container login">
+      <div style={{ height: "70px" }} className="d-none d-lg-block"></div>
+        <div className="row">
+          <div className="col-md-6">
+            <h1 className="glass-box m-3 fw-bold p-4 text-center">Welcome to Fit4Life!</h1>
+            <div className="glass-box m-3 p-3 text-center">
+              <p>
+                Login to your account and embark on a journey towards better health and well-being.
+              </p>
+              <hr />
+              <p>
+                With our powerful tools, you can easily track your nutrition, monitor your calories, and make informed choices about your diet.
+              </p>
             </div>
           </div>
-      </form>
-      <div style={{height: "70px"}}></div>
+
+          <div className="col-md-6">
+            <form className="glass-box m-3 mb-5" onSubmit={handleLogin}>
+              <div className="d-flex justify-content-center align-items-center mt-4">
+                <div className="row p-3">
+                  <div className="col-12">
+                    <input
+                      className="text-center border border-dark border-2 p-2 form-control mb-2 hand-writing"
+                      type="email"
+                      placeholder="Enter Email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <br></br>
+                    <input
+                      className="text-center border border-dark border-2 p-2 form-control mb-2 hand-writing"
+                      type="password"
+                      placeholder="Enter Password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                  </div>
+                  <br></br>
+                  <div className="col-12 text-center hand-writing">
+                    <button
+                      className="btn btn-warning border-dark border-2 mt-3 col-6 mb-4"
+                      type="submit">
+                      Login
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      <div style={{ height: "70px" }}></div>
     </div>
   );
 };
