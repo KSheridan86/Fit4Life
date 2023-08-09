@@ -11,18 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_08_07_114709) do
-  create_table "calories", force: :cascade do |t|
-    t.integer "length"
-    t.integer "calories_burned"
-    t.text "exercises"
-    t.string "difficulty"
-    t.float "weight_after"
-    t.integer "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_calories_on_user_id"
-  end
-
   create_table "intakes", force: :cascade do |t|
     t.integer "breakfast"
     t.integer "lunch"
@@ -64,7 +52,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_07_114709) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
-  add_foreign_key "calories", "users"
   add_foreign_key "intakes", "users"
   add_foreign_key "profiles", "users"
 end
