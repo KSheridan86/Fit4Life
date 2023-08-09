@@ -121,7 +121,7 @@ const Home = ({loggedIn}) => {
                 {loggedIn && (
                 <div className="col-md-6">
                     <div className="glass-box m-3 mb-5 border-dark text-center">
-                        <h1 className="text-center mt-3 mb-3 text-capitalize nasa-black">
+                        <h1 className="text-center mt-3 mb-3 text-uppercase nasa-black">
                             Welcome {UserData ? UserData.username : 'Friend!'}!
                         </h1>
                         {profileData ? (
