@@ -15,7 +15,7 @@ const ConfirmDelete = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-      // Check if profileData exists in local storage
+      // Check if UserData exists in local storage
       const storedUserData = JSON.parse(localStorage.getItem('UserData'));
       if (storedUserData) {
           setUserData(storedUserData);

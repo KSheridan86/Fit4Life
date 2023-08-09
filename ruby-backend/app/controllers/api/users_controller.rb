@@ -22,6 +22,11 @@ module Api
             end
         end
 
+        def destroy
+            current_user.destroy
+            render json: { message: 'User deleted successfully' }, status: :ok
+        end
+
         private
 
         def user_params

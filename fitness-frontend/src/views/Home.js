@@ -57,20 +57,26 @@ const Home = ({loggedIn}) => {
     const handleSignUp = () => {
         navigate("/signup");
     }
-
+    // This function can be slimmed down to just use userdata.id
     const handleDeleteProfile = () => {
         if (dataFromLogin !== undefined) {
         navigate(`/confirm-delete/${dataFromLogin}`, { state: { data: dataFromLogin } });
     } else if (location.state?.userId) {
         navigate(`/confirm-delete/${location.state?.userId}`, { state: { data: location.state?.userId } });
+    } else {
+        navigate(`/confirm-delete/${UserData.id}`, { state: { data: UserData.id } });
     }};
 
     const handleEditProfile = () => {
-        navigate("/edit-profile", { state: {profileData, UserData}});
+        navigate("/edit-profile", { state: { profileData, UserData }});
     };
 
     const handleCreateProfile = () => {
-        navigate("/create-profile", { state: {profileData, UserData}});
+        navigate("/create-profile", { state: { profileData, UserData }});
+    };
+
+    const handleDeleteUser = () => {
+        navigate("/delete-user", { state: { UserData }});
     };
 
     return (
@@ -122,7 +128,7 @@ const Home = ({loggedIn}) => {
             </div>
             {loggedIn ? (
             <div className="glass-box m-3 mb-5 border-dark text-center">
-                <h1 className="hand-writing text-center mt-3 mb-3">
+                <h1 className="hand-writing text-center mt-3 mb-3 text-capitalize">
                     Welcome {UserData ? UserData.username : 'Friend!'}!
                 </h1>
                 {profileData ? (
@@ -139,6 +145,13 @@ const Home = ({loggedIn}) => {
                     <div className="col-12 text-center hand-writing mb-3">
                         <button onClick={handleDeleteProfile} className="btn btn-warning border-dark">Delete Profile</button>
                     </div>
+                    <div className="col-12 text-center hand-writing mb-3">
+                    <button 
+                            onClick={handleDeleteUser}
+                            className="btn btn-danger border-dark">
+                                Delete Account
+                        </button>
+                        </div>
                 </div>
                 ) : (
                 <div className="text-center">
@@ -149,8 +162,14 @@ const Home = ({loggedIn}) => {
                     <div className="col-12 text-center hand-writing">
                         <button 
                             onClick={handleCreateProfile}
-                            className="btn btn-warning border-dark border-2 mt-3 col-6 mb-5">
+                            className="btn btn-warning border-dark border-2 mt-3 col-6 mb-3">
                                 Create Profile
+                        </button>
+                        <br></br>
+                        <button 
+                            onClick={handleDeleteUser}
+                            className="btn btn-warning border-dark border-2 col-6 mb-5">
+                                Delete Account
                         </button>
                     </div>
                 </div>)}

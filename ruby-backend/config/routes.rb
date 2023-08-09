@@ -6,9 +6,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   resource :profile, only: [:new, :create, :edit, :update, :destroy]
-  devise_scope :user do
-    delete 'users', to: 'registrations#destroy'
-  end
+  # devise_scope :user do
+  #   delete 'users', to: 'registrations#destroy'
+  # end
 
   namespace :api do
     resources :profiles, only: [:index, :show, :create, :update, :destroy]
@@ -17,9 +17,10 @@ Rails.application.routes.draw do
     post 'logout', to: 'sessions#destroy'
     get 'profile', to: 'profiles#show'
     get 'users', to: 'users#show'
+    delete 'users', to: 'users#destroy'
 
-    resources :users, only: [] do
-      # resources :workouts, except: [:index, :show]
-    end
+    # resources :users, only: [] do
+    #   resources :workouts, except: [:index, :show]
+    # end
   end
 end

@@ -5,6 +5,7 @@ import Home from '../views/Home';
 import Calories from '../views/Calories';
 import Nutrition from '../views/Nutrition';
 import SignUp from '../views/SignUp';
+import DeleteUser from '../views/DeleteUser';
 import Login from '../views/Login';
 import Logout from '../views/Logout';
 import ConfirmDelete from '../views/ConfirmDelete';
@@ -84,8 +85,9 @@ const Navbar = ({ isLoggedIn, onLogin, onLogout }) => {
         <Route path="/calories" element={<Calories />} />
         <Route path="/nutrition" element={<Nutrition />} />
         <Route path="/signup" element={<SignUp onLogin={onLogin} />} />
-        <Route path="/login" element={<Login onLogin={onLogin} onLogout={onLogout} />} /> 
-        <Route path="/logout" element={<Logout onLogin={onLogin} onLogout={onLogout} />} />
+        <Route path="/delete-user" element={<DeleteUser onLogout={onLogout} />} />
+        <Route path="/login" element={<Login onLogin={onLogin} />} /> 
+        <Route path="/logout" element={<Logout onLogout={onLogout} />} />
         <Route path="/confirm-delete/:id" element={<ConfirmDelete />} />
         <Route path="/edit-profile" element={<EditProfile />} />
         <Route path="/create-profile" element={<CreateProfile />} />
