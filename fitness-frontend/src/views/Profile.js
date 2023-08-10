@@ -7,7 +7,7 @@ const Profile = () => {
 
   useEffect(() => {
     // Fetch the user's profile data from the backend when the component mounts
-    axios.get('http://localhost:4000/api/profile')
+    axios.get('http://16.171.133.35:4000/api/profile')
       .then((response) => {
         setUser(response.data);
       })
@@ -18,7 +18,7 @@ const Profile = () => {
 
   const handleUpdateProfile = async (updatedProfile) => {
     try {
-      const response = await axios.put('http://localhost:4000/api/profile', {
+      const response = await axios.put('http://16.171.133.35:4000/api/profile', {
         user: updatedProfile,
       });
       // If the update is successful, update the local user state

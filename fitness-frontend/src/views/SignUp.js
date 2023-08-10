@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const api = axios.create({
-    baseURL: 'http://localhost:4000/api',
+    baseURL: 'http://16.171.133.35:4000/api',
     withCredentials: true,
 });
 

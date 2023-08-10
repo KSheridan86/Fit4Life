@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const api = axios.create({
-    baseURL: 'http://localhost:4000', // Replace with the actual base URL of your Rails API
+    baseURL: 'http://16.171.133.35:4000', // Replace with the actual base URL of your Rails API
     withCredentials: true,
 });
 
