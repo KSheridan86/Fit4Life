@@ -1,3 +1,49 @@
+version: 2.1
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only:
+                - main
+      - deploy:
+          filters:
+            branches:
+              only:
+                - main
+          requires:
+            - build
+
+jobs:
+  build:
+    working_directory: ~/Fit4Life/ruby-backend
+    docker:
+      - image: circleci/node:10.16.3
+    steps:
+      - checkout
+      - run:
+          name: update-npm
+          command: 'sudo npm install -g npm@5'
+      - run:
+          name: install-npm
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+          paths:
+            - ./node_modules
+
+  deploy:
+    docker:
+      - image: circleci/node:10.16.3
+    steps:
+      - run:
+          name: deploy-application
+          command: ssh -o StrictHostKeyChecking=no $EC2_USERNAME@$EC2_PUBLIC_DNS "rm -rf Fit4Life/;git clone https://github.com/KSheridan86/Fit4Life.git; source Fit4Life/deploy.sh"
+
+
 # version: 2.1
 
 # workflows:
@@ -44,47 +90,4 @@
 #           command: ssh -o StrictHostKeyChecking=no $EC2_USERNAME@$EC2_PUBLIC_DNS "rm -rf Fit4Life/;git clone https://github.com/KSheridan86/Fit4Life.git; source Fit4Life/deploy.sh"
 
 
-version: 2.1
 
-workflows:
-  version: 2
-  build:
-    jobs:
-      - build:
-          filters:
-            branches:
-              only:
-                - main
-      - deploy:
-          filters:
-            branches:
-              only:
-                - main
-          requires:
-            - build
-
-jobs:
-  build:
-    working_directory: ~/Fit4Life/ruby-backend
-    docker:
-      - image: circleci/node:10.16.3
-    steps:
-      - checkout
-      - run:
-          name: update-npm
-          command: 'sudo npm install -g npm@5'
-      - run:
-          name: install-npm
-          command: npm install
-      - save_cache:
-          key: dependency-cache-{{ checksum "package-lock.json" }}
-          paths:
-            - ./node_modules
-
-  deploy:
-    docker:
-      - image: circleci/node:10.16.3
-    steps:
-      - run:
-          name: deploy-application
-          command: echo "Deploying the application..."
