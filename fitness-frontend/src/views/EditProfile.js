@@ -5,13 +5,22 @@ import { useLocation, useNavigate } from 'react-router-dom';
 const api = axios.create({
     baseURL: 'http://localhost:4000', // Replace with the actual base URL of your Rails API
     withCredentials: true,
+    headers: {
+      'X-CSRF-Token': getCsrfToken(), // Function to get CSRF token
+  },
 });
+
+function getCsrfToken() {
+  const token = document.querySelector('meta[name="csrf-token"]');
+  return token ? token.content : '';
+}
 
 const EditProfile = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const { profileData } = location.state;
     const { UserData } = location.state;
+    
     const [profile, setProfile] = useState({
         age: profileData.age,
         height: profileData.height,
@@ -22,6 +31,8 @@ const EditProfile = () => {
     });
 
     const handleInputChange = event => {
+      console.log(UserData)
+      console.log(UserData.id)
         const { name, value } = event.target;
         setProfile(prevProfile => ({ ...prevProfile, [name]: value }));
     };
@@ -29,7 +40,12 @@ const EditProfile = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await api.put(`/api/profiles/${UserData.id}`, { profile });
+            const response = await api.put(`/api/profiles/${UserData.id}`, { profile }, {
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem('authToken')}` // Include the authentication token here
+            }
+        
+            });
             if (response) {
                 localStorage.setItem('profileData', JSON.stringify(profile));
             }

@@ -14,7 +14,7 @@ module Backend
     # Rack CORS configuration
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins 'http://localhost:3000'  # Adjust this with the correct origin of your frontend app
+        origins 'https://fit4-life.vercel.app'  # Adjust this with the correct origin of your frontend app
         resource '/api/*',
           headers: :any,
           methods: [:get, :post, :put, :patch, :delete, :options, :head],
@@ -22,8 +22,13 @@ module Backend
       end
     end
 
+    # Configure cookies
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore, key: '_backend_session', same_site: :none, secure: true
+
     config.action_controller.default_protect_from_forgery = {
-      same_site: :strict
+      with: :exception,
+      unless: -> { request.format.json? },
     }
 
     # Configuration for the application, engines, and railties goes here.

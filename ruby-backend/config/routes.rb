@@ -5,13 +5,13 @@ Rails.application.routes.draw do
   root 'home#index'
   # Defines the root path route ("/")
   # root "articles#index"
-  resource :profile, only: [:new, :create, :edit, :update, :destroy]
+  resource :profile, only: [:new, :create, :edit, :update, :PUT, :destroy]
   # devise_scope :user do
   #   delete 'users', to: 'registrations#destroy'
   # end
 
   namespace :api do
-    resources :profiles, only: [:index, :show, :create, :update, :destroy]
+    resources :profiles, only: [:index, :show, :create, :update, :PUT, :destroy]
     resources :users, only: [:show, :create, :update, :destroy]
     post 'login', to: 'sessions#create'
     post 'logout', to: 'sessions#destroy'

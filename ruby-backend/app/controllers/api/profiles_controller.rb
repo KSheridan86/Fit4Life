@@ -1,8 +1,8 @@
 module Api
     class ProfilesController < ApplicationController
         before_action :authenticate_user!
-        # before_action :set_current_user
-        before_action :set_profile, only: [:show, :update, :destroy]
+        before_action :set_current_user
+        # before_action :set_profile, only: [:show, :update, :destroy]
         skip_before_action :verify_authenticity_token
         # protect_from_forgery with: :exception, unless: -> { request.format.json? }
 
@@ -16,14 +16,29 @@ module Api
             render json: @profile
         end
 
+        # def create
+        #     @profile = current_user.build_profile(profile_params)
+        #     if @profile.save
+        #         render json: @profile, status: :created
+        #     else
+        #         render json: { errors: @profile.errors.full_messages }, status: :unprocessable_entity
+        #     end
+        # end
+
         def create
-            @profile = current_user.build_profile(profile_params)
-            if @profile.save
-                render json: @profile, status: :created
+            if current_user
+                puts "Current User: #{current_user.email}" # Add this line for debugging
+                @profile = current_user.build_profile(profile_params)
+                if @profile.save
+                    render json: @profile, status: :created
+                else
+                    render json: { errors: @profile.errors.full_messages }, status: :unprocessable_entity
+                end
             else
-                render json: { errors: @profile.errors.full_messages }, status: :unprocessable_entity
+                render json: { error: 'User not authenticated' }, status: :unauthorized
             end
         end
+          
 
         def update
             puts "Current User: #{current_user.email}" # Add this line for debugging
@@ -54,6 +69,12 @@ module Api
         def set_profile
             @profile = current_user.profile
         end
+
+        def set_current_user
+            @current_user ||= User.find_by(authentication_token: request.headers['Authorization'])
+            puts "Current User from Token: #{@current_user&.email}" # Add this line for debugging
+        end
+
         
         # def set_current_user
         #     @current_user ||= User.find_by(authentication_token: request.headers['Authorization'])
