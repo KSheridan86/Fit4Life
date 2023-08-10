@@ -53,12 +53,11 @@ const Navbar = ({ isLoggedIn, onLogin, onLogout }) => {
                   Home
                 </Link>
               </li>
-              { isLoggedIn ?
               <li className="nav-item">
                 <Link className="nav-link nasa" to="/nutrition" onClick={closeNav}>
                   Nutrition
                 </Link>
-              </li> : null}
+              </li>
               { isLoggedIn ? 
                 <li className="nav-item">
                   <Link className="nav-link nasa" to="/logout" onClick={closeNav}>
